@@ -30,7 +30,7 @@ defmodule Townjudge do
   def find_judge(n, trust) do
     result =
       1..n
-      |> Enum.filter(&is_trusted_by_all?(&1, trust, n))
+      |> Stream.filter(&is_trusted_by_all?(&1, trust, n))
       |> Enum.filter(&is_not_trusting_others?(&1, trust))
 
     case result do
